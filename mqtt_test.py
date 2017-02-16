@@ -24,6 +24,11 @@ def on_connect(client, userdata, flags, respons_code):
     client.subscribe(sub_topic)
 
 
+def on_message(client, userdata, msg):
+    text = msg.payload
+    print(text)
+
+
 def on_publish(client, userdata, mid):
     print("publish: {0}".format(mid))
 
@@ -32,6 +37,7 @@ if __name__ == "__main__":
     client = mqtt.Client(protocol=mqtt.MQTTv311)
     client.on_connect = on_connect
     client.on_publish = on_publish
+    client.on_message = on_message
     client.username_pw_set(user_name, password)
     client.connect(host, port=port, keepalive=60)
     client.loop_start()
