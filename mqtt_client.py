@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Websocket Client
+# MQTT Client
 #
 # created by Shun Iwase
 
-import thread
 import time
 import base64
 import json
@@ -22,8 +21,10 @@ topic = "sh8@github/jphacks"
 sub_topic = topic + '/result'
 pub_topic = topic + '/image'
 
+
 def on_connect(client, userdata, flags, respons_code):
     client.subscribe(sub_topic)
+
 
 def on_message(client, userdata, msg):
     print msg
@@ -40,8 +41,10 @@ def on_message(client, userdata, msg):
     except UnboundLocalError:
         print 'エラーが発生しました'
 
+
 def on_publish(client, userdata, mid):
     print("publish: {0}".format(mid))
+
 
 if __name__ == "__main__":
     client = mqtt.Client(protocol=mqtt.MQTTv311)
