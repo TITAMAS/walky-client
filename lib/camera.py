@@ -22,10 +22,8 @@ class Camera:
         self.capture = cv2.VideoCapture(self.camera_num)
         self.set_capture()
 
-    # ================================
-    # キャプチャーの用意
-    # ================================
     def set_capture(self):
+        """キャプチャーの用意"""
         self.capture.set(3, self.image_width)
         self.capture.set(4, self.image_height)
         self.capture.set(5, self.fps)
@@ -33,10 +31,8 @@ class Camera:
             raise IOError('Camera cannot open.')
         print 'finish setting camera'
 
-    # ================================
-    # スナップショットを撮影
-    # ================================
     def snapshot(self, name):
+        """スナップショットを撮影"""
         ret, image = self.capture.read()
         if not ret:
             raise IOError("Cannnot shot")

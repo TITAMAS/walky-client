@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# 距離を読む関数
 def read_distance():
+    """加速度センサから距離を読み取る"""
+
     # 必要なライブラリのインポート・設定
     import time
     import RPi.GPIO as GPIO

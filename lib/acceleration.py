@@ -25,10 +25,8 @@ class Acceralation(object):
         self.history = []
         self.history_limit = 100  # Queueの容量
 
-    # ===============================
-    # 数値の取得
-    # ===============================
     def get(self):
+        """数値の取得"""
         x_l = self.i2c.read_byte_data(self.address, 0x28)
         x_h = self.i2c.read_byte_data(self.address, 0x29)
         x_a = (x_h << 8 | x_l) >> 4
@@ -46,10 +44,8 @@ class Acceralation(object):
 
         return (x_a, y_a, z_a)
 
-    # ===============================
-    # 結果を出力
-    # ===============================
     def print_result(self):
+        """結果を出力"""
         x_a, y_a, z_a = self.get()
         gal = np.sqrt(x_a**2+y_a**2+z_a**2)
         print ("X-Value:%6.2f" % (x_a))
@@ -57,12 +53,11 @@ class Acceralation(object):
         print ("Z-Value:%6.2f" % (z_a))
         print ("Gal:%6.2f" % (gal))
 
-    # ===============================
-    # 撮影するかの判断
-    # 直近の加速度の履歴を正規分布とみなして
-    # -0.8σに閾値を設定する
-    # ===============================
     def permit_snapshot(self):
+        """撮影するかの判断
+        直近の加速度の履歴を正規分布とみなして
+        -0.8σに閾値を設定する
+        """
         x, y, z = self.get()
         mag = np.sqrt(x**2+y**2+z**2)
         self.history.insert(0, mag)
