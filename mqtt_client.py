@@ -9,17 +9,22 @@ import time
 import base64
 import json
 import uuid
+import os
 from lib.camera import Camera
 from lib.acceleration import Acceralation
 from lib import jtalk
 from lib import ir_sensor
 import paho.mqtt.client as mqtt
 
-host = 'beam.soracom.io'
+# host = 'beam.soracom.io'
+host = 'std1.mqtt.shiguredo.jp'
 port = 1883
 topic = "sh8@github/jphacks"
 sub_topic = topic + '/result'
 pub_topic = topic + '/image'
+
+user_name = 'sh8@github'
+password = os.environ['SANGO_PASSWORD']
 
 
 def on_connect(client, userdata, flags, respons_code):
@@ -27,9 +32,9 @@ def on_connect(client, userdata, flags, respons_code):
 
 
 def on_message(client, userdata, msg):
-    print msg
-    res = json.loads(msg)
-    text = res["text"].encode('utf-8')
+    text = msg.payload
+    print text
+
     try:
         distance = ir_sensor.read_distance()
         if distance == "close":
@@ -37,7 +42,7 @@ def on_message(client, userdata, msg):
         elif distance == "far":
             jtalk.speak("遠くの%s" % text)
         else:
-            jtalk.speak("%-3.2fメートル前方に%s" % (distance, text))
+            jtalk.speak("%-3.2fメートル前方に%sがあります" % (distance, text))
     except UnboundLocalError:
         print 'エラーが発生しました'
 
@@ -51,6 +56,7 @@ if __name__ == "__main__":
     client.on_connect = on_connect
     client.on_message = on_message
     client.on_publish = on_publish
+    client.username_pw_set(user_name, password)
     client.connect(host, port=port, keepalive=60)
     client.loop_start()
 

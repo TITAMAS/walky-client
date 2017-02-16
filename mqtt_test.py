@@ -13,7 +13,8 @@ import paho.mqtt.client as mqtt
 
 host = 'std1.mqtt.shiguredo.jp'
 user_name = 'sh8@github'
-password = os.environ['SANGO_PASSWORD']
+# password = os.environ['SANGO_PASSWORD']
+password = 'mpODwrfY6ueM4X3u'
 port = 1883
 topic = '%s/jphacks' % user_name
 sub_topic = topic + '/result'

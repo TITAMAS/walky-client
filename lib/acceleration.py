@@ -22,6 +22,8 @@ class Acceralation(object):
         self.address = 0x18
         self.__threshold = 1200
         self.__notmoving = 450
+        self.history = []
+        self.history_limit = 100  # Queueの容量
 
     # ===============================
     # 数値の取得
@@ -57,24 +59,31 @@ class Acceralation(object):
 
     # ===============================
     # 撮影するかの判断
+    # 直近の加速度の履歴を正規分布とみなして
+    # -0.8σに閾値を設定する
     # ===============================
     def permit_snapshot(self):
         x, y, z = self.get()
         mag = np.sqrt(x**2+y**2+z**2)
-        # print "x : %s, y : %s, z : %s, mag : %s" % (x, y, z, mag)
-        return (self.__notmoving < mag and mag < self.__threshold)
-
+        self.history.insert(0, mag)
+        if len(self.history) >= self.history_limit:
+            self.history.pop()
+        mean = np.mean(self.history)
+        std = np.std(self.history)
+        threshold = mean - 0.8 * std
+        return mag < threshold
 
 def main():
     sensor = Acceralation()
 
     while True:
-        x, y, z = sensor.get()
-        print ("X-Value:%6.2f" % (x))
-        print ("Y-Value:%6.2f" % (y))
-        print ("Z-Value:%6.2f" % (z))
-        print np.sqrt(x**2+y**2+z**2)
-        time.sleep(0.1)
+        if sensor.permit_snapshot():
+            print '--------------------------'
+        # x, y, z = sensor.get()
+        # print ("X-Value:%6.2f" % (x))
+        # print ("Y-Value:%6.2f" % (y))
+        # print ("Z-Value:%6.2f" % (z))
+        # print np.sqrt(x**2+y**2+z**2)
 
 
 if __name__ == '__main__':
