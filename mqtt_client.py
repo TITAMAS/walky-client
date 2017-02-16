@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
+
 # MQTT Client
 #
 # created by Shun Iwase
 
 import time
 import base64
-import json
 import uuid
 import os
 from lib.camera import Camera
