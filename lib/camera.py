@@ -12,28 +12,13 @@ class Camera:
     """WEBカメラの設定
     """
 
-    def __init__(self, use_last=True, camera_num=0,
-                 image_width=1280, image_height=720, fps=30):
+    def __init__(self):
         self.img_path = "./images/"
-        self.camera_num = camera_num
-        self.image_width = image_width
-        self.image_height = image_height
-        self.fps = fps
-        self.capture = cv2.VideoCapture(self.camera_num)
-        self.set_capture()
-
-    def set_capture(self):
-        """キャプチャーの用意"""
-        self.capture.set(3, self.image_width)
-        self.capture.set(4, self.image_height)
-        self.capture.set(5, self.fps)
-        if self.capture.isOpened() is False:
-            raise IOError('Camera cannot open.')
         print 'finish setting camera'
 
     def snapshot(self, name):
         """スナップショットを撮影"""
-        ret, image = self.capture.read()
+        ret, image = cv2.VideoCapture(0).read()
         if not ret:
             raise IOError("Cannnot shot")
         cv2.imwrite(self.img_path+name, image)
