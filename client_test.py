@@ -28,6 +28,6 @@ if __name__ == '__main__':
     conn.request("POST", "/vision/v1.0/analyze?%s" % params, img, headers)
 
     response = conn.getresponse()
-    data = response.read()
+    data = response.read().decode('utf-8')
     pretty_print_json(data)
     conn.close()
