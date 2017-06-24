@@ -6,7 +6,6 @@
 
 import smbus
 import numpy as np
-import time
 
 
 def s18(value):
@@ -48,10 +47,10 @@ class Acceralation(object):
         """結果を出力"""
         x_a, y_a, z_a = self.get()
         gal = np.sqrt(x_a**2+y_a**2+z_a**2)
-        print ("X-Value:%6.2f" % (x_a))
-        print ("Y-Value:%6.2f" % (y_a))
-        print ("Z-Value:%6.2f" % (z_a))
-        print ("Gal:%6.2f" % (gal))
+        print("X-Value:%6.2f" % (x_a))
+        print("Y-Value:%6.2f" % (y_a))
+        print("Z-Value:%6.2f" % (z_a))
+        print("Gal:%6.2f" % (gal))
 
     def permit_snapshot(self):
         """撮影するかの判断
@@ -69,16 +68,18 @@ class Acceralation(object):
         return mag < threshold
 
 def main():
+    import time
     sensor = Acceralation()
 
     while True:
         if sensor.permit_snapshot():
-            print '--------------------------'
-        # x, y, z = sensor.get()
-        # print ("X-Value:%6.2f" % (x))
-        # print ("Y-Value:%6.2f" % (y))
-        # print ("Z-Value:%6.2f" % (z))
-        # print np.sqrt(x**2+y**2+z**2)
+            print('--------------------------')
+            x, y, z = sensor.get()
+            print("X-Value:%6.2f" % (x))
+            print("Y-Value:%6.2f" % (y))
+            print("Z-Value:%6.2f" % (z))
+            print(np.sqrt(x**2+y**2+z**2))
+            time.sleep(2)
 
 
 if __name__ == '__main__':
