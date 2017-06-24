@@ -14,7 +14,7 @@ class Camera:
 
     def __init__(self):
         self.img_path = "./images/"
-        print 'finish setting camera'
+        print('finish setting camera')
 
     def snapshot(self, name):
         """スナップショットを撮影"""

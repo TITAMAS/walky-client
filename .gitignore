@@ -1,3 +1,6 @@
 *.pyc
 /images/
 /lib/dic/
+settings.py
+.DS_Store
+__pycache__/
