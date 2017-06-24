@@ -18,7 +18,7 @@ if __name__ == '__main__':
     }
 
     # request params
-    params = urlencode({'visualFeatures': 'Categories'})
+    params = urlencode({'visualFeatures': 'Tags'})
 
     # connection
     conn = HTTPSConnection('westus.api.cognitive.microsoft.com')

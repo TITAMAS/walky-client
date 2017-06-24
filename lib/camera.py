@@ -5,20 +5,18 @@
 #
 # created by Keisuke Okumura
 
-import cv2
+import os
 
 
-class Camera:
-    """WEBカメラの設定
-    """
+def snapshot(self, name):
+    """スナップショットを撮影"""
+    filepath = os.path.join(os.getcwd(), '../../images')
+    status = os.system('fswebcam -F 1 -S 10 --no-banner -r 320x240 %s.jpg' % name)
+    if status == 0:
+        self.snapshot(name)
+    else:
+        print('Shot successfuly')
 
-    def __init__(self):
-        self.img_path = "./images/"
-        print('finish setting camera')
 
-    def snapshot(self, name):
-        """スナップショットを撮影"""
-        ret, image = cv2.VideoCapture(0).read()
-        if not ret:
-            raise IOError("Cannnot shot")
-        cv2.imwrite(self.img_path+name, image)
+if __name__ == '__main__':
+    snapshot('../test.jpg')

@@ -4,7 +4,8 @@ import os
 import sys
 import json
 
-from lib import Camera, Acceralation
+from lib import Acceralation
+from lib.camera import snapshot
 import settings
 
 def pretty_print_json(json_str):
@@ -14,12 +15,11 @@ def pretty_print_json(json_str):
 if __name__ == '__main__':
 
     accel = Acceralation()
-    camera = Camera()
     while True:
         if accel.permit_snapshot():
             token = uuid.uuid4()
             filename = '%s.jpg' % token
-            camera.snapshot(filename)
+            snapshot(filename)
 
             headers = {
                 'Content-Type': 'application/octet-stream',
@@ -27,7 +27,7 @@ if __name__ == '__main__':
             }
 
             # request params
-            params = urlencode({'visualFeatures': 'Categories'})
+            params = urlencode({'visualFeatures': 'Tags'})
 
             # connection
             conn = HTTPSConnection('westus.api.cognitive.microsoft.com')

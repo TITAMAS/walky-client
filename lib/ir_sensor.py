@@ -38,3 +38,7 @@ def read_distance():
     distance = timepassed * 170
     GPIO.cleanup()
     return distance
+
+if __name__ == '__main__':
+    dist = read_distance()
+    print('Dist:', dist)
