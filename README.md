@@ -1,10 +1,7 @@
 # Usage
 ## Production
-- Set `export SANGO_PASSWORD=hogehoge`
-- Run `pip install paho-mqtt`
+- Move `settings.py` from your local
 - Run `python mqtt_client.py`
 
 ## Test
-- Set `export SANGO_PASSWORD=hogehoge`
-- Run `pip install paho-mqtt`
-- Run `python mqtt_test.py`
+- Run `python client_test.py`
