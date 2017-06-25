@@ -1,8 +1,10 @@
-from urllib.parse import urlencode
 from http.client import HTTPSConnection
+import json
 import os
 import sys
-import json
+import time
+from urllib.parse import urlencode
+import uuid
 
 from lib.acceleration import Acceleration
 from lib.camera import snapshot
