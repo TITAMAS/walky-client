@@ -8,15 +8,15 @@
 import os
 
 
-def snapshot(self, name):
+def snapshot(name):
     """スナップショットを撮影"""
-    filepath = os.path.join(os.getcwd(), '../../images')
-    status = os.system('fswebcam -F 1 -S 10 --no-banner -r 320x240 %s.jpg' % name)
+    filepath = os.path.join(os.getcwd(), 'images', name)
+    status = os.system('raspistill -t 1 -o %s -vf -hf -w 640 -h 480' % filepath)
     if status == 0:
-        self.snapshot(name)
+        snapshot(name)
     else:
         print('Shot successfuly')
 
 
 if __name__ == '__main__':
-    snapshot('../test.jpg')
+    snapshot('test.jpg')
