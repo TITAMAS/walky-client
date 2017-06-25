@@ -12,7 +12,7 @@ def s18(value):
     return -(value & 0b100000000000) | (value & 0b011111111111)
 
 
-class Acceralation(object):
+class Acceleration(object):
     """加速度センサーの値を取得
     """
 
@@ -69,7 +69,7 @@ class Acceralation(object):
 
 def main():
     import time
-    sensor = Acceralation()
+    sensor = Acceleration()
 
     while True:
         if sensor.permit_snapshot():

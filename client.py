@@ -4,7 +4,7 @@ import os
 import sys
 import json
 
-from lib import Acceralation
+from lib.acceleration import Acceralation
 from lib.camera import snapshot
 import settings
 

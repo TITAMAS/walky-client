@@ -6,6 +6,8 @@
 # created by Keisuke Okumura
 
 import os
+import time
+
 import picamera
 
 
@@ -18,12 +20,12 @@ def snapshot(name):
     camera.resolution = (640, 480)
     camera.shutter_speed = 5000
     camera.iso = 800
-    status = camera.capture(filepath, format='jpeg')
-    print(status)
-    if status != None:
+    try:
+        camera.capture(filepath, format='jpeg')
+    except PiCameraError:
+        print('Something went wrong with the camera')
+        time.sleep(3)
         snapshot(name)
-    else:
-        print('Shot successfuly')
 
 
 if __name__ == '__main__':
