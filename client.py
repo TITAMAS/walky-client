@@ -8,6 +8,7 @@ import uuid
 
 from lib.acceleration import Acceleration
 from lib.camera import snapshot
+from lib.ir_sensor import read_distance
 import settings
 
 def pretty_print_json(json_str):
@@ -40,6 +41,9 @@ if __name__ == '__main__':
 
             response = conn.getresponse()
             data = response.read().decode('utf-8')
+
+            dist = read_distance()
+
             pretty_print_json(data)
             conn.close()
 

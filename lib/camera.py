@@ -22,6 +22,7 @@ def snapshot(name):
         camera.iso = 800
         try:
             camera.capture(filepath, format='jpeg')
+            print('Capture successfuly')
         except PiCameraError:
             print('Something went wrong with the camera')
             time.sleep(3)
