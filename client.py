@@ -43,6 +43,7 @@ if __name__ == '__main__':
             data = response.read().decode('utf-8')
 
             dist = read_distance()
+            print('Dist:', dist)
 
             pretty_print_json(data)
             conn.close()

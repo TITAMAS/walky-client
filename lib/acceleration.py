@@ -57,15 +57,18 @@ class Acceleration(object):
         直近の加速度の履歴を正規分布とみなして
         -0.8σに閾値を設定する
         """
-        x, y, z = self.get()
-        mag = np.sqrt(x**2+y**2+z**2)
-        self.history.insert(0, mag)
-        if len(self.history) >= self.history_limit:
-            self.history.pop()
-        mean = np.mean(self.history)
-        std = np.std(self.history)
-        threshold = mean - 0.8 * std
-        return mag < threshold
+        try:
+            x, y, z = self.get()
+            mag = np.sqrt(x**2+y**2+z**2)
+            self.history.insert(0, mag)
+            if len(self.history) >= self.history_limit:
+                self.history.pop()
+            mean = np.mean(self.history)
+            std = np.std(self.history)
+            threshold = mean - 0.8 * std
+            return mag < threshold
+        except:
+            return False
 
 def main():
     import time
