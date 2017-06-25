@@ -14,11 +14,18 @@ import settings
 def pretty_print_json(json_str):
     parsed = json.loads(json_str)
     print(json.dumps(parsed, indent=4, sort_keys=True))
+    return json
 
 if __name__ == '__main__':
+    # Create a directory to store images if it does not exist.
+    directory = 'images'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
 
+    # Initialize accelerometer
     accel = Acceleration()
     while True:
+        # Capture snapshot when acceleration is minimum
         if accel.permit_snapshot():
             token = uuid.uuid4()
             filename = '%s.jpg' % token
@@ -42,10 +49,12 @@ if __name__ == '__main__':
             response = conn.getresponse()
             data = response.read().decode('utf-8')
 
+            # Read distance from ir sensor
             dist = read_distance()
             print('Dist:', dist)
 
-            pretty_print_json(data)
+            json = pretty_print_json(data)
+
             conn.close()
 
             time.sleep(5.0)
