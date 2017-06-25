@@ -4,7 +4,7 @@ import os
 import sys
 import json
 
-from lib.acceleration import Acceralation
+from lib.acceleration import Acceleration
 from lib.camera import snapshot
 import settings
 
@@ -14,7 +14,7 @@ def pretty_print_json(json_str):
 
 if __name__ == '__main__':
 
-    accel = Acceralation()
+    accel = Acceleration()
     while True:
         if accel.permit_snapshot():
             token = uuid.uuid4()
