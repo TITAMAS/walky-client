@@ -1,6 +1,7 @@
 from http.client import HTTPSConnection
 import json
 import os
+import picamera
 import sys
 import time
 from urllib.parse import urlencode
@@ -24,39 +25,67 @@ if __name__ == '__main__':
 
     # Initialize accelerometer
     accel = Acceleration()
-    while True:
-        # Capture snapshot when acceleration is minimum
-        if accel.permit_snapshot():
-            token = uuid.uuid4()
-            filename = '%s.jpg' % token
-            snapshot(filename)
+    with picamera.PiCamera() as camera:
+        # Set camera settings
+        print('Initializing...')
+        camera.hflip = True
+        camera.vflip = True
+        camera.framerate = 80
+        camera.resolution = (640, 480)
+        camera.shutter_speed = 5000
+        camera.iso = 800
+        camera.start_preview()
 
-            headers = {
-                'Content-Type': 'application/octet-stream',
-                'Ocp-Apim-Subscription-Key': settings.SUBSCRIPTION_KEY,
-            }
+        time.sleep(2)
+        print('Initialized...')
 
-            # request params
-            params = urlencode({'visualFeatures': 'Tags'})
+        while True:
+            # Capture snapshot when acceleration is minimum
+            if accel.permit_snapshot():
+                start = time.time()
+                print("start_time:", start)
 
-            # connection
-            conn = HTTPSConnection('westus.api.cognitive.microsoft.com')
+                token = uuid.uuid4()
+                filename = '%s.jpg' % token
+                snapshot(camera, filename)
 
-            filepath = os.path.join('images', filename)
-            img = open(filepath, 'rb').read()
-            conn.request("POST", "/vision/v1.0/analyze?%s" % params, img, headers)
+                elapsed_time_snapshot = time.time() - start
+                print ("elapsed_time_snapshot:{0}".format(elapsed_time_snapshot) + "[sec]")
 
-            os.remove(filepath)
+                headers = {
+                    'Content-Type': 'application/octet-stream',
+                    'Ocp-Apim-Subscription-Key': settings.SUBSCRIPTION_KEY,
+                }
 
-            response = conn.getresponse()
-            data = response.read().decode('utf-8')
+                # request params
+                params = urlencode({'visualFeatures': 'Categories'})
 
-            # Read distance from ir sensor
-            dist = read_distance()
-            print('Dist:', dist)
+                # connection
+                conn = HTTPSConnection('westus.api.cognitive.microsoft.com')
 
-            json = pretty_print_json(data)
+                filepath = os.path.join('images', filename)
+                img = open(filepath, 'rb').read()
+                conn.request("POST", "/vision/v1.0/analyze?%s" % params, img, headers)
 
-            conn.close()
+                response = conn.getresponse()
+                data = response.read().decode('utf-8')
 
-            time.sleep(5.0)
+                os.remove(filepath)
+
+                # Read distance from ir sensor
+                dist = read_distance()
+                print('Dist:', dist)
+
+                json = pretty_print_json(data)
+
+                conn.close()
+
+                elapsed_time = time.time() - start
+                print ("elapsed_time:{0}".format(elapsed_time) + "[sec]")
+
+                end = time.time()
+                print("end:", end)
+
+                time.sleep(5.0)
+
+        camera.stop_preview()
