@@ -6,13 +6,21 @@
 # created by Keisuke Okumura
 
 import os
+import picamera
 
 
 def snapshot(name):
     """スナップショットを撮影"""
+    camera = picamera.PiCamera()
     filepath = os.path.join(os.getcwd(), 'images', name)
-    status = os.system('raspistill -t 1 -o %s -vf -hf -w 640 -h 480' % filepath)
-    if status == 0:
+    camera.hflip = True
+    camera.vflip = True
+    camera.resolution = (640, 480)
+    camera.shutter_speed = 5000
+    camera.iso = 800
+    status = camera.capture(filepath, format='jpeg')
+    print(status)
+    if status != None:
         snapshot(name)
     else:
         print('Shot successfuly')
