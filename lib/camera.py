@@ -9,6 +9,7 @@ import os
 import time
 
 import picamera
+from picamera import PiCameraError
 
 
 def snapshot(name):
