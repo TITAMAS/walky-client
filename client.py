@@ -31,9 +31,10 @@ if __name__ == '__main__':
         camera.hflip = True
         camera.vflip = True
         camera.framerate = 80
-        camera.resolution = (640, 480)
+        camera.resolution = (160, 120)
         camera.shutter_speed = 5000
         camera.iso = 800
+        camera.color_effects = (128,128)
         camera.start_preview()
 
         time.sleep(2)
@@ -58,7 +59,7 @@ if __name__ == '__main__':
                 }
 
                 # request params
-                params = urlencode({'visualFeatures': 'Categories'})
+                params = urlencode({'visualFeatures': 'Tags'})
 
                 # connection
                 conn = HTTPSConnection('westus.api.cognitive.microsoft.com')
