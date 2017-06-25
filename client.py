@@ -46,6 +46,8 @@ if __name__ == '__main__':
             img = open(filepath, 'rb').read()
             conn.request("POST", "/vision/v1.0/analyze?%s" % params, img, headers)
 
+            os.remove(filepath)
+
             response = conn.getresponse()
             data = response.read().decode('utf-8')
 
