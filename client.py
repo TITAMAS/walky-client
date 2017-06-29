@@ -5,6 +5,7 @@ import json
 import os
 import picamera
 import sys
+import tempfile
 import time
 
 from lib.acceleration import Acceleration
@@ -50,7 +51,6 @@ if __name__ == '__main__':
                     elapsed_time_snapshot = time.time() - start
                     print ("elapsed_time_snapshot:{0}".format(elapsed_time_snapshot) + "[sec]")
 
-                    filepath = os.path.join(os.getcwd(), 'images', filename)
                     data = json.loads(recognize_image(filepath))
 
                 tags = data.get('tags', [])

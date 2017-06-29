@@ -41,7 +41,7 @@ def speak(tags, dist, lang):
 
 def speak_with_bing(text, lang='en-US'):
     translator = Translator(settings.TTS_API_KEY)
-    output = translator.speak(text, lang, 'Male', 'riff-16khz-16bit-mono-pcm')
+    output = translator.speak(text, lang, 'Female', 'riff-16khz-16bit-mono-pcm')
 
     with tempfile.TemporaryDirectory() as temp_path:
         filepath = os.path.join(temp_path, 'speech.wav')
