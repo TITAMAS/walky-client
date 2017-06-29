@@ -70,6 +70,4 @@ if __name__ == '__main__':
                 end = time.time()
                 print("end:", end)
 
-                time.sleep(5.0)
-
         camera.stop_preview()
