@@ -13,7 +13,7 @@ from lib.camera import snapshot
 from lib.filtering import filter_tags
 from lib.ir_sensor import read_distance
 from lib.recognition import recognize_image
-from lib.speak import recognize_image
+from lib.speak import speak
 
 if __name__ == '__main__':
     # Create a directory to store images if it does not exist.
@@ -62,7 +62,7 @@ if __name__ == '__main__':
                 dist = read_distance()
                 print('Dist:', dist)
 
-                speak(filter_tags, dist, 'en')
+                speak(filtered_tags, dist, 'en-US')
 
                 elapsed_time = time.time() - start
                 print ("elapsed_time:{0}".format(elapsed_time) + "[sec]")
