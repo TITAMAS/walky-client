@@ -9,7 +9,6 @@ from lib.acceleration import Acceleration
 from lib.camera import snapshot
 from lib.ir_sensor import read_distance
 from lib.recognition import recognize_image
-import settings
 
 def pretty_print_json(json_str):
     parsed = json.loads(json_str)
@@ -60,8 +59,6 @@ if __name__ == '__main__':
                 print('Dist:', dist)
 
                 json = pretty_print_json(data)
-
-                conn.close()
 
                 elapsed_time = time.time() - start
                 print ("elapsed_time:{0}".format(elapsed_time) + "[sec]")

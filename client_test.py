@@ -3,7 +3,7 @@ from http.client import HTTPSConnection
 import sys
 import json
 
-import settings
+from lib import settings
 
 def pretty_print_json(json_str):
     parsed = json.loads(json_str)

@@ -4,9 +4,10 @@
 import os
 
 from http.client import HTTPSConnection
+from lib import settings
 from urllib.parse import urlencode
 
-def recognize_image(filename):
+def recognize_image(filepath):
     headers = {
         'Content-Type': 'application/octet-stream',
         'Ocp-Apim-Subscription-Key': settings.SUBSCRIPTION_KEY,
@@ -25,5 +26,7 @@ def recognize_image(filename):
     data = response.read().decode('utf-8')
 
     os.remove(filepath)
+
+    conn.close()
 
     return data
