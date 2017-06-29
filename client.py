@@ -1,15 +1,14 @@
-from http.client import HTTPSConnection
 import json
 import os
 import picamera
 import sys
 import time
-from urllib.parse import urlencode
 import uuid
 
 from lib.acceleration import Acceleration
 from lib.camera import snapshot
 from lib.ir_sensor import read_distance
+from lib.recognition import recognize_image
 import settings
 
 def pretty_print_json(json_str):
@@ -53,25 +52,8 @@ if __name__ == '__main__':
                 elapsed_time_snapshot = time.time() - start
                 print ("elapsed_time_snapshot:{0}".format(elapsed_time_snapshot) + "[sec]")
 
-                headers = {
-                    'Content-Type': 'application/octet-stream',
-                    'Ocp-Apim-Subscription-Key': settings.SUBSCRIPTION_KEY,
-                }
-
-                # request params
-                params = urlencode({'visualFeatures': 'Tags'})
-
-                # connection
-                conn = HTTPSConnection('westus.api.cognitive.microsoft.com')
-
-                filepath = os.path.join('images', filename)
-                img = open(filepath, 'rb').read()
-                conn.request("POST", "/vision/v1.0/analyze?%s" % params, img, headers)
-
-                response = conn.getresponse()
-                data = response.read().decode('utf-8')
-
-                os.remove(filepath)
+                filepath = os.path.join(os.getcwd(), 'images', filename)
+                data = recognize_image(filepath)
 
                 # Read distance from ir sensor
                 dist = read_distance()
