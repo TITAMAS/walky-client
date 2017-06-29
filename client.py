@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import json
 import os
 import picamera
@@ -7,13 +10,10 @@ import uuid
 
 from lib.acceleration import Acceleration
 from lib.camera import snapshot
+from lib.filtering import filter_tags
 from lib.ir_sensor import read_distance
 from lib.recognition import recognize_image
-
-def pretty_print_json(json_str):
-    parsed = json.loads(json_str)
-    print(json.dumps(parsed, indent=4, sort_keys=True))
-    return json
+from lib.speak import recognize_image
 
 if __name__ == '__main__':
     # Create a directory to store images if it does not exist.
@@ -52,13 +52,17 @@ if __name__ == '__main__':
                 print ("elapsed_time_snapshot:{0}".format(elapsed_time_snapshot) + "[sec]")
 
                 filepath = os.path.join(os.getcwd(), 'images', filename)
-                data = recognize_image(filepath)
+                data = json.loads(recognize_image(filepath))
+                tags = data.get('tags', [])
+
+                # Filter tags with whitelist
+                filtered_tags = filter_tags(tags)
 
                 # Read distance from ir sensor
                 dist = read_distance()
                 print('Dist:', dist)
 
-                json = pretty_print_json(data)
+                speak(filter_tags, dist, 'en')
 
                 elapsed_time = time.time() - start
                 print ("elapsed_time:{0}".format(elapsed_time) + "[sec]")
