@@ -6,7 +6,6 @@ import os
 import picamera
 import sys
 import time
-import uuid
 
 from lib.acceleration import Acceleration
 from lib.camera import snapshot
@@ -44,15 +43,16 @@ if __name__ == '__main__':
                 start = time.time()
                 print("start_time:", start)
 
-                token = uuid.uuid4()
-                filename = '%s.jpg' % token
-                snapshot(camera, filename)
+                with tempfile.TemporaryDirectory() as temp_path:
+                    filepath = os.path.join(temp_path, 'image.jpg')
+                    snapshot(camera, filepath)
 
-                elapsed_time_snapshot = time.time() - start
-                print ("elapsed_time_snapshot:{0}".format(elapsed_time_snapshot) + "[sec]")
+                    elapsed_time_snapshot = time.time() - start
+                    print ("elapsed_time_snapshot:{0}".format(elapsed_time_snapshot) + "[sec]")
 
-                filepath = os.path.join(os.getcwd(), 'images', filename)
-                data = json.loads(recognize_image(filepath))
+                    filepath = os.path.join(os.getcwd(), 'images', filename)
+                    data = json.loads(recognize_image(filepath))
+
                 tags = data.get('tags', [])
 
                 # Filter tags with whitelist

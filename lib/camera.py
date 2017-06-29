@@ -12,9 +12,8 @@ import picamera
 from picamera import PiCameraError
 
 
-def snapshot(camera, name):
+def snapshot(camera, filepath):
     """スナップショットを撮影"""
-    filepath = os.path.join(os.getcwd(), 'images', name)
     try:
         camera.capture(filepath, format='jpeg')
         print('Capture successfuly')
