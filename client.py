@@ -16,11 +16,6 @@ from lib.recognition import recognize_image
 from lib.speak import speak
 
 if __name__ == '__main__':
-    # Create a directory to store images if it does not exist.
-    directory = 'images'
-    if not os.path.exists(directory):
-        os.makedirs(directory)
-
     # Initialize accelerometer
     accel = Acceleration()
     with picamera.PiCamera() as camera:
