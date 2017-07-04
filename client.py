@@ -11,7 +11,7 @@ import time
 from lib.acceleration import Acceleration
 from lib.camera import snapshot
 from lib.filtering import filter_tags
-from lib.ir_sensor import read_distance
+from lib.sonic_sensor import read_distance
 from lib.recognition import recognize_image
 from lib.speak import speak
 
