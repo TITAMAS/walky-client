@@ -79,7 +79,7 @@ if __name__ == '__main__':
                     print ("elapsed_time:{0}".format(elapsed_time) + "[sec]")
 
                     end = time.time()
-                print("end:", end)
+                    print("end:", end)
             else:
                 speak_with_raw('will take a picture', LANG)
                 filepath = os.path.join(os.getcwd(), 'images', 'image.jpg')
