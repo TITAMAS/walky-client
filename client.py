@@ -16,8 +16,8 @@ from lib.sonic_sensor import read_distance
 from lib.recognition import recognize_image
 from lib.speak import speak, speak_raw
 
-DEBUG_PIN = 19
-LANG_PIN = 26
+DEBUG_PIN = 26
+LANG_PIN = 19
 
 DEBUG = False
 LANG = 'en-US'
