@@ -1,29 +1,36 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import wiringpi
 import time
+import RPi.GPIO as GPIO
 
 
-def read_switch():
+def read_switch(button_pin):
     # ボタンを繋いだGPIOの端子番号
-    button_pin = 10
 
-    # GPIO初期化
-    wiringpi.wiringPiSetupGpio()
-    wiringpi.pinMode( button_pin, 0 )
-    wiringpi.pullUpDnControl( button_pin, 2 )
-    return wiringpi.digitalRead(button_pin)
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(button_pin, GPIO.IN)
+
+    if GPIO.input(button_pin) == 0:
+        state = True
+    else:
+        state = False
+
+    return state
 
 if __name__ == '__main__':
-    # whileの処理は字下げをするとループの範囲になる（らしい）
-    switch1 = read_switch()
-    while True:
-        if( switch1 == 0 ):
-            # 0V(0)の場合に表示
-            print ("Switch ON")
-        else:
-            # 3.3V(1)の場合に表示
-            print ("Switch OFF")
+    button_pin = 26
+    try:
+        while True:
+            state = read_switch(button_pin)
+            print(state)
+            if(state):
+                # 0V(0)の場合に表示
+                print ("Switch ON")
+            else:
+                # 3.3V(1)の場合に表示
+                print ("Switch OFF")
 
-        time.sleep(1)
+            time.sleep(1)
+    finally:
+        GPIO.cleanup()
