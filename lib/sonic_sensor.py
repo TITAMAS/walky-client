@@ -12,9 +12,9 @@ def read_distance():
         GPIO.setwarnings(False)
 
         # 使用するピンの設定
-        GPIO.setmode(GPIO.BOARD)
-        TRIG = 11 # ボード上の11番ピン(GPIO17)
-        ECHO = 13 # ボード上の13番ピン(GPIO27)
+        GPIO.setmode(GPIO.BCM)
+        TRIG = 17 # ボード上の11番ピン(GPIO17)
+        ECHO = 27 # ボード上の13番ピン(GPIO27)
 
         # ピンのモードをそれぞれ出力用と入力用に設定
         GPIO.setup(TRIG,GPIO.OUT)
