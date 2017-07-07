@@ -14,7 +14,7 @@ from lib.dip import read_switch
 from lib.filtering import filter_tags
 from lib.sonic_sensor import read_distance
 from lib.recognition import recognize_image
-from lib.speak import speak
+from lib.speak import speak, speak_raw
 
 DEBUG_PIN = 19
 LANG_PIN = 26
@@ -29,6 +29,9 @@ if __name__ == '__main__':
 
     if read_switch(DEBUG_PIN):
         DEBUG = True
+
+    print('LANG:', LANG)
+    print('DEBUG:', DEBUG)
 
     # Initialize accelerometer
     accel = Acceleration()
@@ -81,10 +84,14 @@ if __name__ == '__main__':
                     end = time.time()
                     print("end:", end)
             else:
-                speak_with_raw('will take a picture', LANG)
+                directory = 'images'
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+
+                speak_raw('will take a picture', LANG)
                 filepath = os.path.join(os.getcwd(), 'images', 'image.jpg')
                 snapshot(camera, filepath)
-                speak_with_raw('finish taking a picture', LANG)
+                speak_raw('finish taking a picture', LANG)
                 time.sleep(3)
 
         camera.stop_preview()
