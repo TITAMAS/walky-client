@@ -43,7 +43,7 @@ if __name__ == '__main__':
         camera.hflip = True
         camera.vflip = True
         camera.framerate = 80
-        camera.resolution = (160, 120)
+        camera.resolution = (320, 240)
         camera.shutter_speed = 5000
         camera.iso = 800
         camera.color_effects = (128,128)
@@ -91,27 +91,17 @@ if __name__ == '__main__':
                 s3 = boto3.resource('s3')
                 BUCKET_NAME = 'walky-debug'
 
-                conn = S3Connection(
-                        aws_access_key_id=settings.AWS_ACCESS_KEY,
-                        aws_secret_access_key=settings.AWS_SECRET_KEY)
+                with tempfile.TemporaryDirectory() as temp_path:
+                    filepath = os.path.join(temp_path, 'image.jpg')
 
-                bucket = conn.get_bucket(BUCKET_NAME)
+                    speak_raw('will take a picture', LANG)
+                    snapshot(camera, filepath)
+                    speak_raw('finish taking a picture', LANG)
 
-                directory = 'images'
-                if not os.path.exists(directory):
-                    os.makedirs(directory)
-
-                speak_raw('will take a picture', LANG)
-                filepath = os.path.join(os.getcwd(), 'images', 'image.jpg')
-                snapshot(camera, filepath)
-                speak_raw('finish taking a picture', LANG)
-
-                s3 = boto3.resource('s3')
-
-                data = open(filepath, 'rb')
-                key = datetime.now().strftime("%Y/%m/%d/%H_%M_%S")
-                bucket = s3.Bucket(BUCKET_NAME)
-                bucket.put_object(Key=key, Body=data)
+                    data = open(filepath, 'rb')
+                    key = datetime.now().strftime("%Y/%m/%d/%H_%M_%S")
+                    bucket = s3.Bucket(BUCKET_NAME)
+                    bucket.put_object(Key=key, Body=data)
 
                 speak_raw('Uploaded', LANG)
 
