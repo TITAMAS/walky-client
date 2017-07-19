@@ -85,9 +85,10 @@ if __name__ == '__main__':
                     end = time.time()
                     print("end:", end)
             else:
-                from boto.s3.connection import S3Connection
-                from boto.s3.key import Key
+                import boto3
+                from datetime import datetime
 
+                s3 = boto3.resource('s3')
                 BUCKET_NAME = 'walky-debug'
 
                 conn = S3Connection(
@@ -105,12 +106,12 @@ if __name__ == '__main__':
                 snapshot(camera, filepath)
                 speak_raw('finish taking a picture', LANG)
 
-                key = Key(bucket)
-                key.key = filepath
-                key.set_contents_from_filename(filepath)
+                s3 = boto3.resource('s3')
 
-                # Make images public
-                key.make_public()
+                data = open(filepath, 'rb')
+                key = datetime.now().strftime("%Y/%m/%d/%H_%M_%S")
+                bucket = s3.Bucket(BUCKET_NAME)
+                bucket.put_object(Key=key, Body=data)
 
                 speak_raw('Uploaded', LANG)
 
