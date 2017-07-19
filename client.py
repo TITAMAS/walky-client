@@ -46,7 +46,6 @@ if __name__ == '__main__':
         camera.resolution = (320, 240)
         camera.shutter_speed = 5000
         camera.iso = 800
-        camera.color_effects = (128,128)
         camera.start_preview()
 
         time.sleep(2)
