@@ -1,13 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# == Kei18 PC ==
-# sudo open_jtalk -x /usr/local/Cellar/open-jtalk/1.09/dic
-# -m /usr/local/Cellar/open-jtalk/1.09/voice/mei/mei_normal.htsvoice
-# -ow out.wav sample.txt
-#
-# afplay out.wav
-
 import os
 import subprocess
 import tempfile
