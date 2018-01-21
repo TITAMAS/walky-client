@@ -19,6 +19,7 @@ def recognize_image(filepath, graph):
     print(str(datetime.now()))
     if (graph.LoadTensor(img.astype(np.float16), 'user object')):
         output, _ = graph.GetResult()
+        output = np.expand_dims(output, axis=0)
         output = np.delete(output, 0, axis=1)
         data = decode_predictions(output)
     print(str(datetime.now()))
