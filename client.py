@@ -70,7 +70,7 @@ if __name__ == '__main__':
                 categories = recognize_image(filepath, graph)
 
             # Filter tags with whitelist
-            filtered_tags = filter_tags(categories)
+            categories = filter_tags(categories)
 
             # Read distance from ir sensor
             dist = read_distance()
