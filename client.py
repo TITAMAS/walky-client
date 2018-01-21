@@ -22,7 +22,7 @@ DEBUG_PIN = 26
 LANG_PIN = 19
 
 DEBUG = False
-LANG = 'en-US'
+LANG = 'ja-JP'
 
 if __name__ == '__main__':
 

@@ -3,7 +3,6 @@
 
 from __future__ import absolute_import
 
-from lib.filtering import JP_TRANS
 from lib.jtalk import jtalk
 
 
@@ -22,8 +21,7 @@ def speak(tags, dist, lang):
             return
         speak_with_jtalk(text, lang)
     elif lang == 'ja-JP':
-        tags_jp = map(lambda word: JP_TRANS[word], tags)
-        tags_str = str.join('と', tags_jp)
+        tags_str = str.join('と', tags)
         if tag_len >= 1:
             text = '%.1fメートル先に%sがあります' % (dist, tags_str)
         else:
