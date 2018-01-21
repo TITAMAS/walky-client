@@ -5,7 +5,8 @@
 #
 # created by Keisuke Okumura
 
-import os
+from __future__ import absolute_import
+
 import time
 
 import picamera

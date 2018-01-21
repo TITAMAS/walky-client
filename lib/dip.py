@@ -1,5 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+from __future__ import absolute_import
 
 import time
 import RPi.GPIO as GPIO
@@ -18,6 +20,7 @@ def read_switch(button_pin):
 
     return state
 
+
 if __name__ == '__main__':
     button_pin = 26
     try:
@@ -26,10 +29,10 @@ if __name__ == '__main__':
             print(state)
             if(state):
                 # 0V(0)の場合に表示
-                print ("Switch ON")
+                print("Switch ON")
             else:
                 # 3.3V(1)の場合に表示
-                print ("Switch OFF")
+                print("Switch OFF")
 
             time.sleep(1)
     finally:

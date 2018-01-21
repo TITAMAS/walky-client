@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import absolute_import
+
 FILTER_LISTS = ['car', 'track', 'person', 'indoor']
 JP_TRANS = {'car': '車', 'person': '人', 'indoor': '屋内'}
 

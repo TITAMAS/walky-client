@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import absolute_import
+
 from lib.filtering import JP_TRANS
 from lib.jtalk import jtalk
 

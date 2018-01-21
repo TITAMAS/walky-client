@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import absolute_import
+
 import time
+
 
 def read_distance():
     """加速度センサから距離を読み取る"""
@@ -14,8 +17,8 @@ def read_distance():
 
         # 使用するピンの設定
         GPIO.setmode(GPIO.BCM)
-        TRIG = 17 # ボード上の11番ピン(GPIO17)
-        ECHO = 27 # ボード上の13番ピン(GPIO27)
+        TRIG = 17  # ボード上の11番ピン(GPIO17)
+        ECHO = 27  # ボード上の13番ピン(GPIO27)
 
         # ピンのモードをそれぞれ出力用と入力用に設定
         GPIO.setup(TRIG, GPIO.OUT)
@@ -50,6 +53,7 @@ def read_distance():
         return 0.0
     finally:
         GPIO.cleanup()
+
 
 if __name__ == '__main__':
     dist = read_distance()
