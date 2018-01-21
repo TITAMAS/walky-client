@@ -7,7 +7,6 @@ import os
 import picamera
 import sys
 import time
-from datetime import datetime
 
 from backports import tempfile
 import mvnc.mvncapi as ncs
@@ -17,7 +16,7 @@ from lib.dip import read_switch
 from lib.filtering import filter_tags
 from lib.sonic_sensor import read_distance
 from lib.recognition import recognize_image
-from lib.speak import speak, speak_raw
+from lib.speak import speak
 
 DEBUG_PIN = 26
 LANG_PIN = 19

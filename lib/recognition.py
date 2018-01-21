@@ -25,5 +25,6 @@ def recognize_image(filepath, graph):
     print(str(datetime.now()))
 
     data = map(lambda x: x[1], data[0])
+    print(data)
 
     return data
