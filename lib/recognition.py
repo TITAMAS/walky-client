@@ -1,32 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
+import datetime
 
-from http.client import HTTPSConnection
-from lib import settings
-from urllib.parse import urlencode
+import cv2
+from keras.applications.imagenet_utils import decode_predictions
+import numpy as np
 
-def recognize_image(filepath):
-    headers = {
-        'Content-Type': 'application/octet-stream',
-        'Ocp-Apim-Subscription-Key': settings.SUBSCRIPTION_KEY,
-    }
 
-    # request params
-    params = urlencode({'visualFeatures': 'Tags'})
+def recognize_image(filepath, graph):
+    image = cv2.imread(filepath)
+    image = cv2.resize(image, (299, 299))
+    image = np.array(image) / 255.0
+    image -= 0.5
+    image *= 2.
 
-    # connection
-    conn = HTTPSConnection('westus.api.cognitive.microsoft.com')
-
-    img = open(filepath, 'rb').read()
-    conn.request("POST", "/vision/v1.0/analyze?%s" % params, img, headers)
-
-    response = conn.getresponse()
-    data = response.read().decode('utf-8')
-
-    os.remove(filepath)
-
-    conn.close()
+    print(str(datetime.now()))
+    if (graph.LoadTensor(image.astype(np.float16), 'user object')):
+        output, _ = graph.GetResult()
+        output = np.delete(output, 0, axis=1)
+        data = decode_predictions(output)
+        print(data)
+    print(str(datetime.now()))
 
     return data
