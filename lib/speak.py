@@ -23,7 +23,7 @@ def speak(tags, dist, lang):
     elif lang == 'ja-JP':
         tags_str = str.join('と', tags)
         if tag_len >= 1:
-            text = '%.1fメートル先に%sがあります' % (dist, tags_str)
+            text = '%.1fメートル先に%s' % (dist, tags_str)
         else:
             return
         speak_with_jtalk(text, lang)
