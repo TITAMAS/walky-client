@@ -3,7 +3,7 @@
 
 from __future__ import absolute_import
 
-import datetime
+from datetime import datetime
 
 from keras.applications.imagenet_utils import decode_predictions
 from keras.preprocessing import image
