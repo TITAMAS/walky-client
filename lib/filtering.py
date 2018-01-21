@@ -4,7 +4,7 @@
 from __future__ import absolute_import
 
 FILTER_LISTS = ['car', 'track', 'person', 'indoor']
-JP_TRANS = {'car': '車', 'person': '人', 'indoor': '屋内'}
+JP_TRANS = {'car': '車', 'person': '人', 'indoor': '屋内', 'Library': '図書館'}
 
 
 def filter_tags(tags, debug=False):
