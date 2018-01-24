@@ -1,0 +1,17 @@
+[Unit]
+Description=recognizeImage
+Before=network.target
+After=syslog.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/walky/walky-client
+ExecStart=/usr/bin/python2 /home/pi/walky/walky-client/client.py
+ExecStop=
+Restart = always
+TimeoutStopSec=60
+StandardOutput=null
+
+[Install]
+WantedBy = multi-user.target
