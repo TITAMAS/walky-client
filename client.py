@@ -30,6 +30,8 @@ if __name__ == '__main__':
     with PiCamera() as camera:
         # Set camera settings
         print('Initializing...')
+        camera.vflip = True
+        camera.hflip = True
         camera.resolution = (720, 720)
         camera.shutter_speed = 5000
         camera.iso = 800
