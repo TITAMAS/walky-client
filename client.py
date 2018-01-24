@@ -13,7 +13,7 @@ import mvnc.mvncapi as ncs
 
 from lib.camera import snapshot
 from lib.dip import read_switch
-from lib.filtering import filter_tags
+from lib.filtering import filter_categories
 from lib.sonic_sensor import read_distance
 from lib.recognition import recognize_image
 from lib.speak import speak
@@ -70,13 +70,15 @@ if __name__ == '__main__':
                 categories = recognize_image(filepath, graph)
 
             # Filter tags with whitelist
-            categories = filter_tags(categories)
+            categories = filter_categories(categories)
 
             # Read distance from ir sensor
             dist = read_distance()
             print('Dist:', dist)
 
-            speak(categories, dist, LANG)
+            if len(categories) >= 1:
+                speak(categories, dist, LANG)
+                time.sleep(2)
 
             elapsed_time = time.time() - start
             print("elapsed_time:{0}".format(elapsed_time) + "[sec]")

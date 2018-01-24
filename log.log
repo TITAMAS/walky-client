@@ -1,0 +1,241 @@
+Using TensorFlow backend.
+('LANG:', 'ja-JP')
+Initializing...
+Initialized...
+('start_time:', 1516801383.123127)
+Capture successfuly
+elapsed_time_snapshot:0.409048080444[sec]
+2018-01-24 13:43:03.752464
+2018-01-24 13:43:04.197616
+[u'seat_belt', u'car_mirror', u'slot', u'projector', u'pay-phone']
+('Dist:', 10.889506340026855)
+elapsed_time:1.14156198502[sec]
+('end:', 1516801384.264736)
+('start_time:', 1516801386.266856)
+Capture successfuly
+elapsed_time_snapshot:0.392495155334[sec]
+2018-01-24 13:43:06.785729
+2018-01-24 13:43:07.147644
+[u'traffic_light', u'totem_pole', u'cash_machine', u'cinema', u'pole']
+('Dist:', 0.0)
+elapsed_time:0.983716011047[sec]
+('end:', 1516801387.250616)
+('start_time:', 1516801389.252744)
+Capture successfuly
+elapsed_time_snapshot:0.388375043869[sec]
+2018-01-24 13:43:09.773211
+2018-01-24 13:43:10.135268
+[u'cinema', u'scoreboard', u'cash_machine', u'monitor', u'streetcar']
+('Dist:', 0.0)
+elapsed_time:0.985692024231[sec]
+('end:', 1516801390.238486)
+('start_time:', 1516801392.240612)
+Capture successfuly
+elapsed_time_snapshot:0.382811069489[sec]
+2018-01-24 13:43:12.767344
+2018-01-24 13:43:13.129336
+[u'cinema', u'streetcar', u'restaurant', u'cab', u'passenger_car']
+('Dist:', 0.0)
+elapsed_time:0.991986036301[sec]
+('end:', 1516801393.232649)
+('start_time:', 1516801395.23478)
+Capture successfuly
+elapsed_time_snapshot:0.394706964493[sec]
+2018-01-24 13:43:15.774454
+2018-01-24 13:43:16.136506
+[u'passenger_car', u'barbershop', u'restaurant', u'parking_meter', u'vending_machine']
+('Dist:', 0.0)
+elapsed_time:1.00513100624[sec]
+('end:', 1516801396.239958)
+('start_time:', 1516801398.242068)
+Capture successfuly
+elapsed_time_snapshot:0.393400907516[sec]
+2018-01-24 13:43:18.760241
+2018-01-24 13:43:19.123146
+[u'torch', u'barbershop', u'spotlight', u'cinema', u'traffic_light']
+('Dist:', 0.0)
+elapsed_time:0.983855962753[sec]
+('end:', 1516801399.225969)
+('start_time:', 1516801401.227712)
+Capture successfuly
+elapsed_time_snapshot:0.399361133575[sec]
+2018-01-24 13:43:21.740268
+2018-01-24 13:43:22.101348
+[u'spotlight', u'stage', u'cinema', u'bannister', u'suspension_bridge']
+('Dist:', 0.0)
+elapsed_time:0.9762570858[sec]
+('end:', 1516801402.204013)
+('start_time:', 1516801404.206152)
+Capture successfuly
+elapsed_time_snapshot:0.389573097229[sec]
+2018-01-24 13:43:24.706798
+2018-01-24 13:43:25.069272
+[u'seat_belt', u'cinema', u'spotlight', u'grand_piano', u'window_shade']
+('Dist:', 0.0)
+elapsed_time:0.965754985809[sec]
+('end:', 1516801405.17195)
+('start_time:', 1516801407.174092)
+Capture successfuly
+elapsed_time_snapshot:0.385339021683[sec]
+2018-01-24 13:43:27.679849
+2018-01-24 13:43:28.042821
+[u'spotlight', u'car_mirror', u'grand_piano', u'unicycle', u'traffic_light']
+('Dist:', 0.0)
+elapsed_time:0.97150683403[sec]
+('end:', 1516801408.145646)
+('start_time:', 1516801410.147798)
+Capture successfuly
+elapsed_time_snapshot:0.389358997345[sec]
+2018-01-24 13:43:30.657263
+2018-01-24 13:43:31.019829
+[u'spotlight', u'suspension_bridge', u'stage', u'traffic_light', u'cinema']
+('Dist:', 0.0)
+elapsed_time:0.97484588623[sec]
+('end:', 1516801411.122693)
+('start_time:', 1516801413.124821)
+Capture successfuly
+elapsed_time_snapshot:0.391313076019[sec]
+2018-01-24 13:43:33.632550
+2018-01-24 13:43:33.995203
+[u'cinema', u'suspension_bridge', u'spotlight', u'grand_piano', u'window_shade']
+('Dist:', 0.0)
+elapsed_time:0.973106145859[sec]
+('end:', 1516801414.097972)
+('start_time:', 1516801416.100112)
+Capture successfuly
+elapsed_time_snapshot:0.394758939743[sec]
+2018-01-24 13:43:36.621129
+2018-01-24 13:43:36.983114
+[u'spotlight', u'cinema', u'suspension_bridge', u'traffic_light', u'torch']
+('Dist:', 0.0)
+elapsed_time:0.985847949982[sec]
+('end:', 1516801417.086017)
+('start_time:', 1516801419.088127)
+Capture successfuly
+elapsed_time_snapshot:0.414529085159[sec]
+2018-01-24 13:43:39.629421
+2018-01-24 13:43:39.992227
+[u'spotlight', u'steel_drum', u'grand_piano', u'cinema', u'cab']
+('Dist:', 1.397716999053955)
+elapsed_time:0.915240049362[sec]
+('end:', 1516801420.00341)
+('start_time:', 1516801422.005513)
+Capture successfuly
+elapsed_time_snapshot:0.386487007141[sec]
+2018-01-24 13:43:42.507225
+2018-01-24 13:43:42.869627
+[u'spotlight', u'suspension_bridge', u'cinema', u'grand_piano', u'traffic_light']
+('Dist:', 0.0)
+elapsed_time:0.967046022415[sec]
+('end:', 1516801422.972612)
+('start_time:', 1516801424.974737)
+Capture successfuly
+elapsed_time_snapshot:0.398015022278[sec]
+2018-01-24 13:43:45.489493
+2018-01-24 13:43:45.852641
+[u'spotlight', u'cinema', u'traffic_light', u'bannister', u'window_shade']
+('Dist:', 0.0)
+elapsed_time:0.98072218895[sec]
+('end:', 1516801425.95551)
+('start_time:', 1516801427.957625)
+Capture successfuly
+elapsed_time_snapshot:0.394098043442[sec]
+2018-01-24 13:43:48.463799
+2018-01-24 13:43:48.826873
+[u'spotlight', u'torch', u'bell_cote', u'abaya', u'cliff_dwelling']
+('Dist:', 0.0)
+elapsed_time:0.972069978714[sec]
+('end:', 1516801428.929747)
+('start_time:', 1516801430.931895)
+Capture successfuly
+elapsed_time_snapshot:0.397341012955[sec]
+2018-01-24 13:43:51.440916
+2018-01-24 13:43:51.804014
+[u'suspension_bridge', u'grand_piano', u'cinema', u'bannister', u'spotlight']
+('Dist:', 3.8144278526306152)
+elapsed_time:0.897276878357[sec]
+('end:', 1516801431.829221)
+('start_time:', 1516801433.831325)
+Capture successfuly
+elapsed_time_snapshot:0.383651971817[sec]
+2018-01-24 13:43:54.333175
+2018-01-24 13:43:54.695562
+[u'spotlight', u'cinema', u'suspension_bridge', u'bannister', u'turnstile']
+('Dist:', 0.0)
+elapsed_time:0.967159986496[sec]
+('end:', 1516801434.798536)
+('start_time:', 1516801436.800654)
+Capture successfuly
+elapsed_time_snapshot:0.391879081726[sec]
+2018-01-24 13:43:57.311322
+2018-01-24 13:43:57.673998
+[u'torch', u'spotlight', u'traffic_light', u'space_shuttle', u'flagpole']
+('Dist:', 0.0)
+elapsed_time:0.976114034653[sec]
+('end:', 1516801437.776819)
+('start_time:', 1516801439.778954)
+Capture successfuly
+elapsed_time_snapshot:0.39191699028[sec]
+2018-01-24 13:44:00.284124
+2018-01-24 13:44:00.646677
+[u'spotlight', u'suspension_bridge', u'cinema', u'bubble', u'traffic_light']
+('Dist:', 0.0)
+elapsed_time:0.970460891724[sec]
+('end:', 1516801440.74946)
+('start_time:', 1516801442.751581)
+Capture successfuly
+elapsed_time_snapshot:0.395216941833[sec]
+2018-01-24 13:44:03.256972
+2018-01-24 13:44:03.619783
+[u'spotlight', u'traffic_light', u'torch', u'cinema', u'monitor']
+('Dist:', 0.0)
+elapsed_time:0.97084903717[sec]
+('end:', 1516801443.722476)
+('start_time:', 1516801445.724605)
+Capture successfuly
+elapsed_time_snapshot:0.385250806808[sec]
+2018-01-24 13:44:06.214816
+2018-01-24 13:44:06.577066
+[u'traffic_light', u'torch', u'spotlight', u'cinema', u'street_sign']
+('Dist:', 0.0)
+elapsed_time:0.955096006393[sec]
+('end:', 1516801446.67975)
+('start_time:', 1516801448.681895)
+Capture successfuly
+elapsed_time_snapshot:0.389221906662[sec]
+2018-01-24 13:44:09.181164
+2018-01-24 13:44:09.543092
+[u'spotlight', u'traffic_light', u'torch', u'stage', u'ping-pong_ball']
+('Dist:', 0.0)
+elapsed_time:0.963870048523[sec]
+('end:', 1516801449.64582)
+('start_time:', 1516801451.647962)
+Capture successfuly
+elapsed_time_snapshot:0.384368896484[sec]
+2018-01-24 13:44:12.141798
+2018-01-24 13:44:12.504323
+[u'traffic_light', u'torch', u'cinema', u'spotlight', u'obelisk']
+('Dist:', 0.0)
+elapsed_time:0.958930969238[sec]
+('end:', 1516801452.606944)
+('start_time:', 1516801454.609074)
+Capture successfuly
+elapsed_time_snapshot:0.384450912476[sec]
+2018-01-24 13:44:15.102517
+2018-01-24 13:44:15.464091
+[u'traffic_light', u'spotlight', u'cinema', u'monitor', u'beer_bottle']
+('Dist:', 0.0)
+elapsed_time:0.957664966583[sec]
+('end:', 1516801455.566785)
+('start_time:', 1516801457.568921)
+Capture successfuly
+elapsed_time_snapshot:0.388822793961[sec]
+2018-01-24 13:44:18.066710
+Traceback (most recent call last):
+  File "client.py", line 70, in <module>
+    categories = recognize_image(filepath, graph)
+  File "/home/pi/walky/walky-client/lib/recognition.py", line 21, in recognize_image
+    output, _ = graph.GetResult()
+  File "/usr/local/lib/python2.7/dist-packages/mvnc/mvncapi.py", line 264, in GetResult
+    raise Exception(Status(status))
+Exception: mvncStatus.TIMEOUT
