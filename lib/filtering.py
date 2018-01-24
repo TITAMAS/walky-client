@@ -4,10 +4,9 @@
 from __future__ import absolute_import
 
 FILTER_LISTS = [
+    'cab',
     'streetcar',
     'moving_van',
-    'car_mirror',
-    'car_wheel',
     'passenger_car',
     'beach_wagon',
     'sports_car',
@@ -25,10 +24,9 @@ FILTER_LISTS = [
 ]
 
 JP_TRANS = {
+    'cab': 'くるま',
     'streetcar': 'くるま',
     'moving_van': 'くるま',
-    'car_mirror': 'くるま',
-    'car_wheel': 'くるま',
     'passenger_car': 'くるま',
     'beach_wagon': 'くるま',
     'sports_car': 'くるま',

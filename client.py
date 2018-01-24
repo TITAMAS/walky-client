@@ -4,7 +4,7 @@
 from __future__ import absolute_import
 
 import os
-import picamera
+from picamera import PiCamera
 import sys
 import time
 
@@ -12,7 +12,6 @@ from backports import tempfile
 import mvnc.mvncapi as ncs
 
 from lib.camera import snapshot
-from lib.dip import read_switch
 from lib.filtering import filter_categories
 from lib.sonic_sensor import read_distance
 from lib.recognition import recognize_image
@@ -26,21 +25,15 @@ LANG = 'ja-JP'
 
 if __name__ == '__main__':
 
-    if read_switch(LANG_PIN):
-        LANG = 'ja-JP'
-
     print('LANG:', LANG)
 
-    with picamera.PiCamera() as camera:
+    with PiCamera() as camera:
         # Set camera settings
         print('Initializing...')
-        camera.hflip = True
-        camera.vflip = True
         camera.framerate = 80
-        camera.resolution = (1280, 720)
+        camera.resolution = (720, 720)
         camera.shutter_speed = 5000
         camera.iso = 800
-        camera.start_preview()
 
         time.sleep(2)
         print('Initialized...')
