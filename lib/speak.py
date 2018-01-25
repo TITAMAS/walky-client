@@ -39,8 +39,8 @@ def speak(tags, dist):
     tag = tags[0]
 
     if tag_len >= 1:
-        if dist is 0.0 and tag in bike_group:
-            filename = '%s_%s.wav' % ('close', TAG_GROUP[tag])
+        if dist is 0.0 and tag not in bike_group:
+            return
         elif dist < 0.5:
             filename = '%s_%s.wav' % ('close', TAG_GROUP[tag])
         elif dist > 5.0:
