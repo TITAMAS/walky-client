@@ -40,7 +40,7 @@ if __name__ == '__main__':
         time.sleep(2)
         print('Initialized...')
 
-        talk('起動しました')
+        talk('init.wav')
 
         ncs_names = ncs.EnumerateDevices()
         if (len(ncs_names) < 1):
