@@ -23,27 +23,7 @@ FILTER_LISTS = [
     'motor_scooter',
 ]
 
-JP_TRANS = {
-    'cab': 'くるま',
-    'streetcar': 'くるま',
-    'moving_van': 'くるま',
-    'passenger_car': 'くるま',
-    'beach_wagon': 'くるま',
-    'sports_car': 'くるま',
-    'trolleybus': 'ばす',
-    'minibus': 'ばす',
-    'school_bus': 'ばす',
-    'tow_truck': 'とらっく',
-    'trailer_truck': 'とらっく',
-    'garbage_truck': 'とらっく',
-    'bicycle-built-for-two': 'じてんしゃ',
-    'tricycle': 'じてんしゃ',
-    'unicycle': 'じてんしゃ',
-    'mountain_bike': 'じてんしゃ',
-    'motor_scooter': 'ばいく',
-}
-
 
 def filter_categories(categories):
-    filtered_categories = [JP_TRANS[category] for category in categories if category in FILTER_LISTS]
+    filtered_categories = [category for category in categories if category in FILTER_LISTS]
     return list(set(filtered_categories))

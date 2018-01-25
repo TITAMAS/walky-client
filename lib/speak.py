@@ -5,31 +5,50 @@ from __future__ import absolute_import
 
 from lib.jtalk import jtalk
 
+JP_TRANS = {
+    'cab': 'くるま',
+    'streetcar': 'くるま',
+    'moving_van': 'くるま',
+    'passenger_car': 'くるま',
+    'beach_wagon': 'くるま',
+    'sports_car': 'くるま',
+    'trolleybus': 'くるま',
+    'minibus': 'くるま',
+    'school_bus': 'くるま',
+    'tow_truck': 'とらっく',
+    'trailer_truck': 'とらっく',
+    'garbage_truck': 'とらっく',
+    'bicycle-built-for-two': 'じてんしゃ',
+    'tricycle': 'じてんしゃ',
+    'unicycle': 'じてんしゃ',
+    'mountain_bike': 'じてんしゃ',
+    'motor_scooter': 'ばいく',
+}
+
+bicycle_group = [
+    'bicycle-built-for-two',
+    'unicycle',
+    'tricycle',
+    'mountain_bike',
+    'motor_scooter',
+]
+
 
 def speak(tags, dist, lang):
     tag_len = len(tags)
+    tag = tags[0]
+    tag_jp = JP_TRANS[tag]
 
-    # Switch language
-    if lang == 'en-US':
-        tags_str = str.join(' and ', tags)
-        # Use be-verb properly and return if tags are empty
-        if tag_len >= 2:
-            text = 'There are %s in %.1f meters' % (tags_str, dist)
-        elif tag_len == 1:
-            text = 'There is %s in %.1f meters' % (tags_str, dist)
+    if tag_len >= 1:
+        if dist is 0.0 and tag in bicycle_group:
+            text = '近くに%s' % (tag_jp)
+        elif dist < 0.5:
+            text = '近くに%s' % (tag_jp)
         else:
-            return
-        speak_with_jtalk(text, lang)
-    elif lang == 'ja-JP':
-        tags_str = str.join('と', tags)
-        if tag_len >= 1:
-            if dist < 0.5:
-                text = '近くに%s' % (tags_str)
-            else:
-                text = '%.1fメートル先に%s' % (dist, tags_str)
-        else:
-            return
-        speak_with_jtalk(text, lang)
+            text = '%.1fメートル先に%s' % (dist, tag_jp)
+    else:
+        return
+    speak_with_jtalk(text, lang)
 
 
 def speak_raw(text, lang):

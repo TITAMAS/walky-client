@@ -73,7 +73,7 @@ if __name__ == '__main__':
             dist = read_distance()
             print('Dist:', dist)
 
-            if len(categories) >= 1 and dist > 0.0:
+            if len(categories) >= 1:
                 speak(categories, dist, LANG)
                 time.sleep(2)
 
