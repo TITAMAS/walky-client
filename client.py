@@ -74,7 +74,7 @@ if __name__ == '__main__':
             print('Dist:', dist)
 
             if len(categories) >= 1:
-                speak(categories, dist, LANG)
+                speak(categories, dist)
                 time.sleep(2)
 
             elapsed_time = time.time() - start
