@@ -13,7 +13,7 @@ import mvnc.mvncapi as ncs
 
 from lib.camera import snapshot
 from lib.filtering import filter_categories
-from lib.jtalk import jtalk
+from lib.talk import talk
 from lib.sonic_sensor import read_distance
 from lib.recognition import recognize_image
 from lib.speak import speak
@@ -40,7 +40,7 @@ if __name__ == '__main__':
         time.sleep(2)
         print('Initialized...')
 
-        jtalk('起動しました')
+        talk('起動しました')
 
         ncs_names = ncs.EnumerateDevices()
         if (len(ncs_names) < 1):
