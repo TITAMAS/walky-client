@@ -43,7 +43,7 @@ def speak(tags, dist):
             filename = '%s_%s.wav' % ('close', TAG_GROUP[tag])
         elif dist < 0.5:
             filename = '%s_%s.wav' % ('close', TAG_GROUP[tag])
-        elif dist >= 5.0:
+        elif dist > 5.0:
             filename = '%s_%s.wav' % ('far', TAG_GROUP[tag])
         else:
             round_dist = round(dist * 2) / 2.0

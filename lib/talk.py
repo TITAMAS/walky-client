@@ -7,7 +7,7 @@ import subprocess
 
 
 def talk(filename='close_car.wav'):
-    path = os.path.join('voices', filename)
+    path = os.path.join('lib', 'voices', filename)
     aplay = ['aplay', '-q', path]
     subprocess.Popen(aplay)
 
