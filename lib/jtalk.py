@@ -37,10 +37,10 @@ if __name__ == '__main__':
     }
 
     objects = {
-        'car': 'くるま',
-        'truck': 'とらっく',
-        'bike': 'じてんしゃ',
-        'scooter': 'ばいく',
+        'car.wav': 'くるま',
+        'truck.wav': 'とらっく',
+        'bike.wav': 'じてんしゃ',
+        'scooter.wav': 'ばいく',
     }
 
     for d_key, d in dist.iteritems():
