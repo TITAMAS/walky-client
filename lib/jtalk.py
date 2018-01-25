@@ -11,14 +11,13 @@ def jtalk(t, filename='open_jtalk.wav'):
     mech = ['-x', '/var/lib/mecab/dic/open-jtalk/naist-jdic']
     htsvoice = ['-m', '/usr/share/hts-voice/mei/mei_normal.htsvoice']
     speed = ['-r', '1.0']
-    outwav = ['-ow', 'open_jtalk.wav']
+    outwav = ['-ow', filename]
     cmd = open_jtalk + mech + htsvoice + speed + outwav
     c = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     c.stdin.write(t)
     c.stdin.close()
     c.wait()
-    aplay = ['aplay', '-q', filename]
-    subprocess.Popen(aplay)
+    print(filename)
 
 
 if __name__ == '__main__':
