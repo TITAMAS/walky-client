@@ -3,29 +3,29 @@
 
 from __future__ import absolute_import
 
-from lib.jtalk import jtalk
+from lib.talk import talk
 
-JP_TRANS = {
-    'cab': 'くるま',
-    'streetcar': 'くるま',
-    'moving_van': 'くるま',
-    'passenger_car': 'くるま',
-    'beach_wagon': 'くるま',
-    'sports_car': 'くるま',
-    'trolleybus': 'くるま',
-    'minibus': 'くるま',
-    'school_bus': 'くるま',
-    'tow_truck': 'とらっく',
-    'trailer_truck': 'とらっく',
-    'garbage_truck': 'とらっく',
-    'bicycle-built-for-two': 'じてんしゃ',
-    'tricycle': 'じてんしゃ',
-    'unicycle': 'じてんしゃ',
-    'mountain_bike': 'じてんしゃ',
-    'motor_scooter': 'ばいく',
+TAG_GROUP = {
+    'cab': 'car',
+    'streetcar': 'car',
+    'moving_van': 'car',
+    'passenger_car': 'car',
+    'beach_wagon': 'car',
+    'sports_car': 'car',
+    'trolleybus': 'car',
+    'minibus': 'car',
+    'school_bus': 'car',
+    'tow_truck': 'truck',
+    'trailer_truck': 'truck',
+    'garbage_truck': 'truck',
+    'bicycle-built-for-two': 'bike',
+    'tricycle': 'bike',
+    'unicycle': 'bike',
+    'mountain_bike': 'bike',
+    'motor_scooter': 'scooter',
 }
 
-bicycle_group = [
+bike_group = [
     'bicycle-built-for-two',
     'unicycle',
     'tricycle',
@@ -34,26 +34,24 @@ bicycle_group = [
 ]
 
 
-def speak(tags, dist, lang):
+def speak(tags, dist):
     tag_len = len(tags)
     tag = tags[0]
-    tag_jp = JP_TRANS[tag]
 
     if tag_len >= 1:
-        if dist is 0.0 and tag in bicycle_group:
-            text = '近くに%s' % (tag_jp)
+        if dist is 0.0 and tag in bike_group:
+            filename = '%s_%s.wav' % ('close', TAG_GROUP[tag])
         elif dist < 0.5:
-            text = '近くに%s' % (tag_jp)
+            filename = '%s_%s.wav' % ('close', TAG_GROUP[tag])
+        elif dist >= 5.0:
+            filename = '%s_%s.wav' % ('far', TAG_GROUP[tag])
         else:
-            text = '%.1fメートル先に%s' % (dist, tag_jp)
+            round_dist = round(dist * 2) / 2.0
+            filename = '%s_%s.wav' % (round_dist, TAG_GROUP[tag])
     else:
         return
-    speak_with_jtalk(text, lang)
+    speak_with_talk(filename)
 
 
-def speak_raw(text, lang):
-    speak_with_jtalk(text, lang)
-
-
-def speak_with_jtalk(text, lang='en-US'):
-    jtalk(text)
+def speak_with_talk(filename):
+    talk(filename)
